@@ -19,4 +19,19 @@ Server:
         // Do operation.
 
         write(output, reply, ReplySize);
-    }    
+    } 
+
+// Server for multiclients
+
+Server:
+    char request[RequestSize];
+    char reply[ReplySize];
+    FileDescriptor clientInput[NumClients];
+    FileDescriptor clientOuput[NumClients];
+
+    while (fd = select(clientInput, NumClients) {
+        read(clientInput[id], request, RequestSize);
+
+        // Do operation.
+       write(clientOutput[fd], reply, ReplySize);
+    }
