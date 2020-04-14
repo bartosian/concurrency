@@ -1,0 +1,662 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head><base href='http://http://something.localhost.dev:3000' />
+    <title>Kipu - http://something.localhost.dev:3000</title>
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" media="all" href="/assets/application.css"><link rel="stylesheet" media="screen" href="/assets/kipu_appointment_engine/application.css"><link rel="stylesheet" media="print" href="/assets/fullcalendar.print.css">
+    
+  
+    <script type="text/javascript">
+      var datepickerDateFormat     = "mm/dd/yy";
+      var datepickerTimeFormat     = "hh:mm TT";
+      var fullcalendarTimeFormat   = "hh:mmA";
+      var dateFormatLong           = "MMM dd yyyy";
+      var dateFormatShort          = "ddd M/dd";
+      var fullcalendarDateFormat   = "ddd M/DD";
+      var locale                   = "en";
+      var phone_number_country     = "US";
+      var timeZoneAbbreviation     = "EDT";
+      var timeZoneOffsetInSeconds  = -14400;
+      var momentInternalDate       = "MM/DD/YYYY hh:mm A"; // moment.js KAE
+      var max_allergies_on_band    =  4;
+    </script>
+    <script src="/assets/application.js"></script><script src="/assets/settings.js"></script>
+    <script type="text/javascript">
+        FullScreenPanel.config.locker.setPath = "/users/3/lock_screen";
+        FullScreenPanel.config.locker.checkPath = "/users/3/check_screen_lock";
+        FullScreenPanel.config.locker.uncheckPath = "/users/3/authenticate";
+    </script>
+    <script src="/assets/jquery.autosize.js"></script>
+  <script src="/assets/jquery.autosize.init.js"></script><script src="/assets/jquery.minicolors.js"></script>
+    
+    <script src="/assets/fullscreenpanel.initialize.js"></script>
+    <script src="/assets/session_timeout.js"></script>
+  </head>
+  <body onunload="" class="">
+    <div id="container">
+      <a name="top" id="top"></a>
+      <div id="header">
+        <div id="lockScreenAuthPath" data-path="/users/3/authenticate" data-lock-path="/users/3/lock_screen" data-lock-check-path="/users/3/check_screen_lock"></div>
+        <div id="authenticateUserDialog"></div>
+          <div id="user_nav">
+    <ul>
+      <li>
+          <a href="/users/3/edit">15j51nqy Gaylord</a>
+      </li>
+  
+      <div class="countersHolder" style="float:none; display:inline;">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  
+        <li><a href="/settings">Settings</a></li>
+  
+        <li><a href="/users">Users</a></li>
+  
+      <li><a href="/users/sign_out">Sign out</a></li>
+  
+     <li><span data-opener-url="https://wiki.kipuworks.com" class="kipuHelpLink">Help</span></li>
+      </ul>
+  
+      <div style="position: absolute; right:0px; bottom:0px">
+      </div>
+  </div>
+  
+  
+  
+        <div id="navigation">
+          <ul>
+              <li class="">
+                  <a href="/dashboard">Dashboard</a>
+              </li>
+  
+              <li class="">
+                <a href="/patients">Patients</a>
+              </li>
+              <li class="">
+                <a href="/occupancy">Occupancy</a>
+              </li>
+  
+              <li class="">
+                  <a href="/group_session_leaders">Schedules</a>
+              </li>
+  
+              <li class="">
+                <a href="/contacts">Contacts</a>
+              </li>
+              <li class="">
+                <a href="/lab_requisitions.all">
+                  Labs
+                  
+  </a>            </li>
+  
+  
+  
+              <li class="">
+                <a href="/reports">Reports</a>
+              </li>
+  
+  
+              <li class="">
+                <a href="/consent_forms">Templates</a>
+              </li>
+          </ul>
+  
+        </div>
+      </div>
+  
+      <div id="main-area">
+        <div id="settings_controller">
+            <div class="print_only">
+    
+  </div>
+  
+  
+              <div id="content">
+                <div id="content_wrap_wide">
+                  
+  
+  <h1>Settings</h1>
+  
+  <div style="display: none" id="ajax_flash">
+  </div>
+  
+  <div id="sub_nav">
+      <ul>
+      <li class="active"><a href="/settings">Patients</a></li>
+      <li class=""><a href="/settings/substances">Substances</a></li>
+  
+  
+          <li class=""><a href="/medications">Medication</a></li>
+        <li class=""><a href="/orders_settings">Orders</a></li>
+  
+          <li class=""></li>
+  
+      <li class=""><a href="/rooms">Rooms</a></li>
+      <li class=""><a href="/patient_tags">Tags &amp; Filters</a></li>
+          <li class=""><a href="/user_titles">User</a></li>
+          <li class=""><a href="/company_settings">Company</a></li>
+          <li class=""><a href="/contact_types">Contacts</a></li>
+          <li class=""><a href="/vendors">Konnectors</a></li>
+          <li class=""><a href="/golden_thread/assign_golden_thread_patient_settings?item=goal">Golden Thread</a></li>
+          <li class=""><a href="/site_settings/1/edit">Instance</a></li>
+          <li class=""><a href="/kipu_account">Kipu Account</a></li>
+  
+  
+  
+      
+          <li class=""><a href="/versions">Restore</a></li>
+  
+      </ul>
+  </div>
+  
+  
+  <div id="sub_nav_content">
+    <div id="settings" class="content_limited_width">
+          <h2>Patient</h2>
+  
+          <div class="form-block-inline">
+              <h2>Pre-admission status</h2>
+              <div id="pre_admission_statuses">
+                  <form action="/settings/update_pre_admission_statuses" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">
+      <ul id="pre_admission_status" class="sortable clean ui-sortable">
+      </ul>
+      <p><a data-disable-with="Adding..." data-remote="true" href="/settings/add_pre_admission_status">Add item</a></p>
+  
+   <input type="submit" name="commit" value="Update" data-disable-with="Working on it..." class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+  </form>
+              </div>
+          </div>
+  
+          <div class="form-block-inline">
+              <h2>Marital status</h2>
+              <div id="marital_statuses">
+                  <form action="/settings/update_marital_statuses" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">	<p><a data-disable-with="Adding..." data-remote="true" href="/settings/add_marital_status">Add item</a></p>
+  
+   <input type="submit" name="commit" value="Update" data-disable-with="Working on it..." class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+  </form>
+              </div>
+          </div>
+  
+          <div class="form-block-inline-wide">
+              <h2>Discharge Types</h2>
+              <div id="discharge_types">
+                  <form action="/settings/update_patient_discharge_type" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">
+    <label class="inline input-label">Name</label>
+    <label class="inline input-label">Display Name</label>
+    <label class="inline input-label-narrow">Enabled</label>
+  <p><a data-disable-with="Adding..." data-remote="true" href="/settings/add_patient_discharge_type">Add item</a></p>
+      <input type="submit" name="commit" value="Update" data-disable-with="Working on it..." class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+  </form>
+              </div>
+          </div>
+  
+        <div class="form-block-inline-wide">
+          <h2>Payment methods</h2>
+  
+          <div id="payment_methods">
+            <form action="/settings/update_payment_methods" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">	<p><a data-disable-with="Adding..." data-remote="true" href="/settings/add_payment_method">Add item</a></p>
+  
+   <input type="submit" name="commit" value="Update" data-disable-with="Working on it..." class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+  </form>
+          </div>
+        </div>
+  
+          <div class="clear"></div>
+  
+          <div class="form-block-inline">
+              <h2>Food diets</h2>
+              <div id="diets">
+                  <form action="/settings/update_diets" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">	<p><a data-disable-with="Adding..." data-remote="true" href="/settings/add_diet">Add item</a></p>
+  
+   <input type="submit" name="commit" value="Update" data-disable-with="Working on it..." class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+  </form>
+              </div>
+          </div>
+  
+          <div class="form-block-inline">
+              <h2>Patient property condition</h2>
+              <div id="property_conditions">
+                  <form action="/settings/update_property_conditions" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">	<p><a data-disable-with="Adding..." data-remote="true" href="/settings/add_property_condition">Add item</a></p>
+  
+   <input type="submit" name="commit" value="Update" data-disable-with="Working on it..." class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+  </form>
+              </div>
+          </div>
+  
+          <div class="clear"></div>
+  
+  
+  
+    <div class="form-block-wide">
+      <h2>Calendar Appointment Types</h2>
+      <div id="appointment_types">
+        <form action="/settings/update_appointment_types" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">
+  
+  
+    <p>
+      <a data-disable-with="Adding..." data-remote="true" href="/settings/add_appointment_type">Add item</a>
+    </p>
+  
+    <input type="submit" name="commit" value="Update" data-disable-with="Working on it..." class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+  </form>
+      </div>
+    </div>
+  
+    <div class="form-block-wide">
+      <h2>Calendar Appointment Statuses</h2>
+      <div id="appointment_statuses">
+        <form action="/settings/update_appointment_statuses" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">
+  <ul id="appointment_status" class="sortable clean ui-sortable">
+  </ul>
+  
+    <p>
+      <a data-disable-with="Adding..." data-remote="true" href="/settings/add_appointment_status">Add item</a>
+    </p>
+  
+    <input type="submit" name="commit" value="Update" data-disable-with="Working on it..." class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+  
+  </form>
+      </div>
+    </div>
+  
+      <div class="form-block-wide">
+          <h2>Patient Statuses</h2>
+          <div id="setting_statuses">
+              <div style="width:100%;">
+  <form action="/settings/update_setting_statuses" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">
+  <ul id="patient_status" class="sortable clean ui-sortable">
+      </ul>
+  
+      <p><a data-disable-with="Adding..." data-remote="true" href="/settings/add_setting_status">Add item</a></p>
+      <input type="submit" name="commit" value="Update" data-disable-with="Working on it..." class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+  
+  </form></div>
+  
+          </div>
+      </div>
+  
+          <div class="form-block-inline">
+              <h2>Race</h2>
+              <div id="races">
+                  <form action="/settings/update_races" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">	<p><a data-disable-with="Adding..." data-remote="true" href="/settings/add_race">Add item</a></p>
+  
+   <input type="submit" name="commit" value="Update" data-disable-with="Working on it..." class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+  </form>
+              </div>
+          </div>
+  
+          <div class="form-block-inline">
+              <h2>Ethnicity</h2>
+              <div id="ethnicities">
+                  <form action="/settings/update_ethnicities" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">		
+              <p>
+              <input type="text" value="doloremque" name="ethnicity[1][name]" id="ethnicity_1_name">
+              <a data-confirm="Are you sure you want to delete this item?" data-remote="true" href="/settings/1/destroy_item"><img class="icon22" alt="Delete" src="/assets/ui/icon_delete.png"></a>
+              </p>
+      <p><a data-disable-with="Adding..." data-remote="true" href="/settings/add_ethnicity">Add item</a></p>
+  
+   <input type="submit" name="commit" value="Update" data-disable-with="Working on it..." class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+  </form>
+              </div>
+          </div>
+  
+  
+          <div class="clear"></div>
+  
+      <div class="form-block-wide">
+        <h2>Round's Activity</h2>
+        <div id="rounds_activities">
+          <div style="width:100%;">
+    <form action="/settings/update_rounds_activity" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">
+      <ul id="rounds_activities" class="sortable clean ui-sortable">
+      </ul>
+  
+      <p><a data-method="post" data-disable-with="Adding..." data-remote="true" href="/settings/add_rounds_activity">Add item</a></p>
+      <input type="submit" name="commit" value="Update" data-disable-with="Working on it..." class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+  
+  
+  </form></div>
+  
+        </div>
+      </div>
+  
+      <div class="clear"></div>
+      <hr>
+  
+      <div class="form-block-wide">
+        <h2>Rounds Locations</h2>
+        <div id="rounds_locations">
+          <div style="width:100%;">
+    <form action="/settings/update_rounds_location" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">
+      <ul id="rounds_locations" class="sortable clean ui-sortable">
+      </ul>
+  
+      <p><a data-method="post" data-disable-with="Adding..." data-remote="true" href="/settings/add_rounds_location">Add item</a></p>
+      <input type="submit" name="commit" value="Update" data-disable-with="Working on it..." class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+  
+  
+  </form></div>
+        </div>
+      </div>
+  
+      <div class="clear"></div>
+      <hr>
+  
+          <div class="form-block-wide">
+              <h2>Levels of Care</h2>
+              <div id="care_levels">
+                  <div style="width:100%;">
+    <form action="/settings/update_care_levels" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">
+        <ul id="care_levels" class="sortable clean ui-sortable">
+        </ul>
+  
+        <p><a data-disable-with="Adding..." data-remote="true" href="/settings/add_care_level">Add item</a></p>
+        <input type="submit" name="commit" value="Update" data-disable-with="Working on it..." class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+  
+  
+  </form></div>
+  
+              </div>
+          </div>
+  
+          <div class="clear"></div>
+          <hr>
+  
+          <h2>Insurance</h2>
+  
+          <div class="clear"></div>
+  
+          <div class="form-block-wide">
+              <h2>Insurance Benefits</h2>
+              <div id="insurance_benefit_settings">
+                  <form action="/settings/update_insurance_benefit_settings" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">
+  
+  
+  
+      <p><a data-disable-with="Adding..." data-remote="true" href="/settings/add_insurance_benefit_setting">Add item</a></p>
+  
+   <input type="submit" name="commit" value="Update" data-disable-with="Working on it..." class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+  </form>
+              </div>
+          </div>
+  
+          <div class="form-block-inline">
+              <h2>Insurance Verification (yes/no questions)</h2>
+              <div id="insurance_verifications">
+                  <form action="/settings/update_insurance_verifications" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">	<ul id="insurance_verification_questions" class="sortable clean ui-sortable">
+      <p><a data-disable-with="Adding..." data-remote="true" href="/settings/add_insurance_verification">Add item</a></p>
+  
+   <input type="submit" name="commit" value="Update" data-disable-with="Working on it..." class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+   </ul>
+  </form>
+              </div>
+          </div>
+  
+          <div class="clear"></div>
+  
+          <div class="form-block-inline">
+              <h2>Insurance types</h2>
+              <div id="insurance_types">
+                  <form action="/settings/update_insurance_types" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">	<p><a data-disable-with="Adding..." data-remote="true" href="/settings/add_insurance_type">Add item</a></p>
+  
+   <input type="submit" name="commit" value="Update" data-disable-with="Working on it..." class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+  </form>
+              </div>
+          </div>
+  
+          <div class="form-block-inline">
+              <h2>Insurance plan types</h2>
+              <div id="insurance_plan_types">
+                  <form action="/settings/update_insurance_plan_types" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">	<p><a data-disable-with="Adding..." data-remote="true" href="/settings/add_insurance_plan_type">Add item</a></p>
+  
+   <input type="submit" name="commit" value="Update" data-disable-with="Working on it..." class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+  </form>
+              </div>
+          </div>
+  
+          <div class="form-block-inline">
+              <h2>Insurance subscriber relationship</h2>
+              <div id="insurance_subscriber_relationships">
+                  <form action="/settings/update_insurance_subscriber_relationships" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">	<p><a data-disable-with="Adding..." data-remote="true" href="/settings/add_insurance_subscriber_relationship">Add item</a></p>
+  
+   <input type="submit" name="commit" value="Update" data-disable-with="Working on it..." class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+  </form>
+              </div>
+          </div>
+  
+          <div class="form-block-inline">
+              <h2>Utilization review frequencies</h2>
+              <div id="ur_frequencies">
+                  <form action="/settings/update_ur_frequencies" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">	<p><a data-disable-with="Adding..." data-remote="true" href="/settings/add_ur_frequency">Add item</a></p>
+  
+   <input type="submit" name="commit" value="Update" data-disable-with="Working on it..." class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+  </form>
+              </div>
+          </div>
+  
+  
+          <div class="clear"></div>
+          <hr>
+  
+          <h2>Patient contacts</h2>
+  
+          <div class="form-block-inline">
+              <h2>Patient contact relationship</h2>
+              <div id="patient_contact_relationships">
+                  <form action="/settings/update_patient_contact_relationships" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">	<p><a data-disable-with="Adding..." data-remote="true" href="/settings/add_patient_contact_relationship">Add item</a></p>
+  
+   <input type="submit" name="commit" value="Update" data-disable-with="Working on it..." class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+  </form>
+              </div>
+          </div>
+  
+          <div class="form-block-inline">
+              <h2>Patient contact types</h2>
+              <div id="patient_contact_types">
+                  <form action="/settings/update_patient_contact_types" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">
+      <p><a data-disable-with="Adding..." data-remote="true" href="/settings/add_patient_contact_type">Add item</a></p>
+  
+   <input type="submit" name="commit" value="Update" data-disable-with="Working on it..." class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+  </form>
+              </div>
+          </div>
+  
+          <div class="clear"></div>
+          <hr>
+  
+          <h2>Processes, Medication, Treatment Plans, Diagnoses</h2>
+  
+          <div class="form-block" style="width:940px;">
+              <h2>Patient processes (for future compatibility ONLY select ONE item inside the white box)</h2>
+              <div id="patient_processes">
+                  <form action="/settings/update_patient_processes" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">
+      <ul id="patient_processes_sort" class="sort_list clean ui-sortable" data-update-url="http://127.0.0.1:34309/settings/sort_patient_processes">
+  
+  
+  
+              
+                  <li class="patient_process" id="patient_process_1">
+                      <div class="_35 mtop06">
+                          <span class="handle">[drag]</span>
+                          <input class="short" type="text" value="old process" name="patient_process[1][name]" id="patient_process_1_name">
+  
+              
+  
+              
+                      </div>
+  
+                          <div class="left border_white _75" style="display:inline">
+                              <div class="wrap inline" style="padding:0 0.3em 0 0.3em">
+                                  <label for="patient_process_1_show_forms">Forms/Eval.</label>
+                                  <input name="patient_process[1][show_forms]" type="hidden" value="0"><input type="checkbox" value="1" checked="checked" name="patient_process[1][show_forms]" id="patient_process_1_show_forms">
+                              </div>
+  
+                              <div class="wrap inline" style="padding:0 0.3em 0 0.3em">
+                                  <label for="patient_process_1_show_orders">Orders</label>
+                                  <input name="patient_process[1][show_orders]" type="hidden" value="0"><input type="checkbox" value="1" checked="checked" name="patient_process[1][show_orders]" id="patient_process_1_show_orders">
+                              </div>
+                              <div class="wrap inline" style="padding:0 0.3em 0 0.3em">
+                                  <label for="patient_process_1_show_mars">MARs</label>
+                                  <input name="patient_process[1][show_mars]" type="hidden" value="0"><input type="checkbox" value="1" name="patient_process[1][show_mars]" id="patient_process_1_show_mars">
+                              </div>
+                              <div class="wrap inline" style="padding:0 0.3em 0 0.3em">
+                                  <label for="patient_process_1_show_group_sessions">Group Sess.</label>
+                                  <input name="patient_process[1][show_group_sessions]" type="hidden" value="0"><input type="checkbox" value="1" checked="checked" name="patient_process[1][show_group_sessions]" id="patient_process_1_show_group_sessions">
+                              </div>
+                              <div class="wrap inline" style="padding:0 0.3em 0 0.3em">
+                                  <label for="patient_process_1_show_phi">PHI</label>
+                                  <input name="patient_process[1][show_phi]" type="hidden" value="0"><input type="checkbox" value="1" name="patient_process[1][show_phi]" id="patient_process_1_show_phi">
+                              </div>
+  
+                                  <div class="wrap inline" style="padding:0 0.3em 0 0.3em">
+                                      <label for="patient_process_1_show_lab_tests">Lab tests</label>
+                                      <input name="patient_process[1][show_lab_tests]" type="hidden" value="0"><input type="checkbox" value="1" name="patient_process[1][show_lab_tests]" id="patient_process_1_show_lab_tests">
+                                  </div>
+  
+  
+  
+  
+                          </div>
+  
+                          <div class="_7">
+    <label for="patient_process_1_allow_utilization_review">Allow UR</label>
+    <input name="patient_process[1][allow_utilization_review]" type="hidden" value="0"><input type="checkbox" value="1" name="patient_process[1][allow_utilization_review]" id="patient_process_1_allow_utilization_review">
+  </div>
+  
+  <div class="_9">
+    <label for="patient_process_1_protected">Protected</label>
+    <input name="patient_process[1][protected]" type="hidden" value="0"><input type="checkbox" value="1" name="patient_process[1][protected]" id="patient_process_1_protected">
+  </div>
+  
+                          <div class="left">
+                          <a data-remote="true" href="/settings/1/destroy_patient_process"><img class="icon22" alt="Delete" src="/assets/ui/icon_delete.png"></a>
+                          </div>
+  
+                      <div style="clear:both"></div>
+  </li>
+      </ul>
+  
+      <p><a disable_with="Adding..." data-remote="true" href="/settings/add_patient_process">Add item</a></p>
+  
+   <input type="submit" name="commit" value="Update" data-disable-with="Working on it..." class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+  </form>
+              </div>
+          </div>
+  
+          <div class="form-block-inline">
+              <h2>Medication routes</h2>
+              <div id="medication_routes">
+                  <form action="/settings/update_medication_routes" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">	<p><a data-disable-with="Adding..." data-remote="true" href="/settings/add_medication_route">Add item</a></p>
+  
+   <input type="submit" name="commit" value="Update" data-disable-with="Working on it..." class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+  </form>
+              </div>
+          </div>
+  
+      <div class="form-block-inline">
+        <h2>Care Team Functions</h2>
+        <div id="primary_care_team_functions">
+        <form action="/settings/update_primary_care_team_functions" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">    <table>
+        <tbody><tr>
+        <th><span class="label">Role</span></th>
+        <th></th>
+        </tr>
+  
+            
+                <tr>
+                  <td><input disabled="disabled" pattern="[a-zA-Z][a-zA-Z0-9 _]*" type="text" value="Primary_Physician" name="primary_care_team_function[1][name]" id="primary_care_team_function_1_name"></td>
+                  <td>
+                            <a data-confirm="Are you sure you want to disable this item?" data-remote="true" href="/settings/1/disable_item_primary_care_team_functions"><img class="icon22" alt="Disable" src="/assets/ui/icon_disable.png"></a>
+  
+                  </td>
+                </tr>
+  
+      </tbody></table>
+      <br>
+  
+      <p><a data-disable-with="Adding..." data-remote="true" href="/settings/add_primary_care_team_functions">Add item</a></p>
+  
+      <input type="submit" name="commit" value="Update" disable_with="Working on it..." class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+  
+  </form>
+        </div>
+      </div>
+  
+  
+          <div style="clear:both"></div>
+          <hr>
+  
+          <div class="form-block-wide">
+              <h2>Diagnoses</h2>
+              <div id="diagnosis_codes">
+                  <form class="edit_patient_setting" id="edit_patient_setting_2" action="/settings/update_diagnosis_codes?id=2" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">
+      <div class="label left">Enter each diagnosis into a seperate line</div>
+      <div class="clear"></div>
+        <p>
+              <textarea class="textarea_small_100 text_autosize" name="patient_setting[name]" id="patient_setting_name" style="overflow: hidden; overflow-wrap: break-word; resize: horizontal; height: 64px;"></textarea>
+          </p>
+      <input type="submit" name="commit" value="Update" data-disable-with="Working on it..." class="ui-button ui-widget ui-state-default ui-corner-all" role="button" aria-disabled="false">
+  
+  </form>
+              </div>
+          </div>
+  
+      <div class="clear"></div>
+  
+      </div>
+  <div class="bootswrap no_print right ptop30px  position-bottom-right" id="btn_to_top"><a href="#" id="top" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-arrow-up"></span></a></div></div>
+  <div id="destroy_patient_process_dialog"></div>
+  
+  <script type="text/javascript">
+      $('input.minicolors').minicolors({theme:'none'});
+  //	$('input[placeholder], textarea[placeholder]').addPlaceholder();
+  </script>
+  
+                </div>
+              </div>
+          <div class="print_only">
+    
+  </div>
+  
+        </div>
+      </div>
+  
+      <div class="clear"></div>
+      <div id="footer">
+        
+      </div>
+  
+    </div>
+    <div id="patient-locs-dialog"></div>
+    <div id="patient-pct-dialog"></div>
+    <div id="primary-care-team-history-dialog"></div>
+    <div id="ajax_working"><img src="/assets/ui/ajax_bar_working.gif" alt="Ajax bar working"></div>
+    <div id="please_wait" style="display:none;"><h2>Please wait ...</h2><p><br><br><img src="/assets/ui/loading.gif" alt="Loading"></p></div>
+  
+    <!-- so site setting can be passed to javascript in all use cases -->
+    <span id="check_diag_code_setting" data-diagnosis="true"></span>
+  
+    <div id="sessionTimeoutDialog" title="Your session is about to expire!">
+      <p>You will be logged off soon.</p>
+      <p>To continue your session please click below.</p>
+    </div>
+    <div id="isUserLogedIn" data-user="true"></div>
+    <div id="sig_pad_driver" data-number="0"></div>
+  
+    <!-- ePrescribe modal dialog -->
+    <div id="dialog-modal-eprescribe"></div>
+    <div id="quick-order-dialog"></div>
+    <div id="custom-order-dialog"></div>
+  
+  
+  <textarea tabindex="-1" style="position: absolute; top: -999px; left: 0px; right: auto; bottom: auto; border: 0px; padding: 0px; box-sizing: content-box; overflow-wrap: break-word; overflow: hidden; transition: none 0s ease 0s; height: 0px !important; min-height: 0px !important; font-family: &quot;Helvetica Neue&quot;, Arial, Helvetica, Geneva, sans-serif; font-size: 16px; font-weight: 400; font-style: normal; letter-spacing: 0px; text-transform: none; word-spacing: 0px; text-indent: 0px; line-height: normal; width: 810px;" class="autosizejs"></textarea></body></html>
